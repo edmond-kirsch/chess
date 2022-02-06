@@ -1,4 +1,5 @@
 using System.Text;
+using Chess.API.Hubs;
 using Chess.Core;
 using Chess.Core.Entities;
 using Chess.Core.Interfaces;
@@ -68,6 +69,10 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChessHub>("hub/chess");
+    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();
