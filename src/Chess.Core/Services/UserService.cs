@@ -4,6 +4,7 @@ using System.Text;
 using Chess.Core.DomainModels;
 using Chess.Core.Entities;
 using Chess.Core.Interfaces;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -12,17 +13,14 @@ namespace Chess.Core.Services;
 
 public class UserService : IUserService
 {
-    private readonly UserManager<User> _userManager;
-    private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly JwtOptions _jwtOptions;
+    [NotNull] private readonly UserManager<User> _userManager;
+    [NotNull] private readonly JwtOptions _jwtOptions;
 
 
-    public UserService(UserManager<User> userManager, RoleManager<IdentityRole> roleManager,
-        IOptionsMonitor<ChessOptions> options)
+    public UserService([NotNull] UserManager<User> userManager, [NotNull] IOptionsMonitor<ChessOptions> options)
     {
         _userManager = userManager;
-        _roleManager = roleManager;
-        _jwtOptions = options.CurrentValue.Jwt;
+        _jwtOptions = options.CurrentValue!.Jwt;
     }
 
     public async Task<bool> CreateUserAsync(string username, string email, string password)
@@ -39,7 +37,7 @@ public class UserService : IUserService
         return result.Succeeded;
     }
 
-    public async Task<UserModel?> GetUserAsync(string username)
+    public async Task<UserModel> GetUserAsync(string username)
     {
         var user = await _userManager.FindByNameAsync(username);
 
@@ -50,13 +48,13 @@ public class UserService : IUserService
 
         var userModel = new UserModel
         {
-            //todo
+            Username = user.UserName
         };
 
         return userModel;
     }
 
-    public async Task<JwtTokenModel?> GetUserTokenAsync(string username, string password)
+    public async Task<JwtTokenModel> GetUserTokenAsync([NotNull] string username, [NotNull] string password)
     {
         var user = await _userManager.FindByNameAsync(username);
 

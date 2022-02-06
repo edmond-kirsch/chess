@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Nullable>enable</Nullable>
+        <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>aspnet-Chess.API-10AE423D-067D-4DDD-AB49-3FCBFD110965</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
