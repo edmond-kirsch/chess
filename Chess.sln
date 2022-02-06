@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.API", "src\Chess.API\Chess.API.csproj", "{3D3288DE-192B-4375-9613-2885CABE042A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Core", "src\Chess.Core\Chess.Core.csproj", "{12A45054-367F-443B-A478-EB91C76BF484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Infrastructure", "src\Chess.Infrastructure\Chess.Infrastructure.csproj", "{643F227D-6A64-45FE-A49B-C6501D01915A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{3D3288DE-192B-4375-9613-2885CABE042A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D3288DE-192B-4375-9613-2885CABE042A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D3288DE-192B-4375-9613-2885CABE042A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12A45054-367F-443B-A478-EB91C76BF484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12A45054-367F-443B-A478-EB91C76BF484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12A45054-367F-443B-A478-EB91C76BF484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12A45054-367F-443B-A478-EB91C76BF484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643F227D-6A64-45FE-A49B-C6501D01915A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643F227D-6A64-45FE-A49B-C6501D01915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643F227D-6A64-45FE-A49B-C6501D01915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643F227D-6A64-45FE-A49B-C6501D01915A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
