@@ -1,28 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.API", "src\Chess.API\Chess.API.csproj", "{3D3288DE-192B-4375-9613-2885CABE042A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chess.Identity", "Chess.Identity", "{649F4ACB-7D89-4E4C-A0C5-72498B6BB58C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Core", "src\Chess.Core\Chess.Core.csproj", "{12A45054-367F-443B-A478-EB91C76BF484}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Identity", "src\Chess.Identity\Chess.Identity\Chess.Identity.csproj", "{6E13401A-7D00-4D1A-A4AD-3F5AE7978734}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Infrastructure", "src\Chess.Infrastructure\Chess.Infrastructure.csproj", "{643F227D-6A64-45FE-A49B-C6501D01915A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chess.Statistics", "Chess.Statistics", "{C6E5A867-DA17-451B-A13A-F6E71A26DAF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Statistics.Api", "src\Chess.Statistics\Chess.Statistics.Api\Chess.Statistics.Api.csproj", "{0B506058-E417-46C5-9CC0-32F674A98B82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{5528858A-8863-4A12-BF38-2C36EDD7F19C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E13401A-7D00-4D1A-A4AD-3F5AE7978734} = {649F4ACB-7D89-4E4C-A0C5-72498B6BB58C}
+		{0B506058-E417-46C5-9CC0-32F674A98B82} = {C6E5A867-DA17-451B-A13A-F6E71A26DAF0}
+		{5528858A-8863-4A12-BF38-2C36EDD7F19C} = {649F4ACB-7D89-4E4C-A0C5-72498B6BB58C}
+	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D3288DE-192B-4375-9613-2885CABE042A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D3288DE-192B-4375-9613-2885CABE042A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D3288DE-192B-4375-9613-2885CABE042A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D3288DE-192B-4375-9613-2885CABE042A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12A45054-367F-443B-A478-EB91C76BF484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12A45054-367F-443B-A478-EB91C76BF484}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12A45054-367F-443B-A478-EB91C76BF484}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12A45054-367F-443B-A478-EB91C76BF484}.Release|Any CPU.Build.0 = Release|Any CPU
-		{643F227D-6A64-45FE-A49B-C6501D01915A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{643F227D-6A64-45FE-A49B-C6501D01915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{643F227D-6A64-45FE-A49B-C6501D01915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{643F227D-6A64-45FE-A49B-C6501D01915A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E13401A-7D00-4D1A-A4AD-3F5AE7978734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E13401A-7D00-4D1A-A4AD-3F5AE7978734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E13401A-7D00-4D1A-A4AD-3F5AE7978734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E13401A-7D00-4D1A-A4AD-3F5AE7978734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B506058-E417-46C5-9CC0-32F674A98B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B506058-E417-46C5-9CC0-32F674A98B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B506058-E417-46C5-9CC0-32F674A98B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B506058-E417-46C5-9CC0-32F674A98B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5528858A-8863-4A12-BF38-2C36EDD7F19C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5528858A-8863-4A12-BF38-2C36EDD7F19C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5528858A-8863-4A12-BF38-2C36EDD7F19C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5528858A-8863-4A12-BF38-2C36EDD7F19C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
