@@ -5,7 +5,6 @@
 using IdentityServer4;
 using Chess.Identity.Data;
 using Chess.Identity.Models;
-using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -43,7 +42,6 @@ namespace Chess.Identity
                     .AddInMemoryIdentityResources(Config.IdentityResources)
                     .AddInMemoryApiScopes(Config.ApiScopes)
                     .AddInMemoryClients(Config.Clients)
-                    .AddTestUsers(TestUsers.Users)
                     .AddAspNetIdentity<ApplicationUser>();
 
             services.AddAuthentication();

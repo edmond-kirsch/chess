@@ -8,8 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chess.Statistics", "Chess.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess.Statistics.Api", "src\Chess.Statistics\Chess.Statistics.Api\Chess.Statistics.Api.csproj", "{0B506058-E417-46C5-9CC0-32F674A98B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{5528858A-8863-4A12-BF38-2C36EDD7F19C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
