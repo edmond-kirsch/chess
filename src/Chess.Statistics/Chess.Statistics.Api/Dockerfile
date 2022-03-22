@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/Chess.Statistics/Chess.Statistics.Api/Chess.Statistics.Api.csproj", "Chess.Statistics.Api/"]
-RUN dotnet restore "src/Chess.Statistics/Chess.Statistics.Api/Chess.Statistics.Api.csproj"
-COPY . .
-WORKDIR "/src/Chess.Statistics.Api"
+COPY ["src/Chess.Statistics/Chess.Statistics.Api/Chess.Statistics.Api.csproj", "Chess.Statistics/Chess.Statistics.Api/"]
+RUN dotnet restore "Chess.Statistics/Chess.Statistics.Api/Chess.Statistics.Api.csproj"
+COPY  ["src/Chess.Statistics/Chess.Statistics.Api", "Chess.Statistics/Chess.Statistics.Api/"]
+WORKDIR "/src/Chess.Statistics/Chess.Statistics.Api"
 RUN dotnet build "Chess.Statistics.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
