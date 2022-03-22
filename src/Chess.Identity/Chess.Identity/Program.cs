@@ -36,11 +36,11 @@ namespace Chess.Identity
             try
             {
                 var host = CreateHostBuilder(args).Build();
-                
+                using var scope = host.Services.CreateScope();
+                var services = scope.ServiceProvider;
                 Log.Information("Updating database...");
-                var context = host.Services.GetService<ApplicationDbContext>();
+                var context = services.GetService<ApplicationDbContext>();
                 context.Database.Migrate();
-                
                 Log.Information("Starting host...");
                 host.Run();
 
