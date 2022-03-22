@@ -38,7 +38,7 @@ namespace Chess.Identity
                 new Client
                 {
                     ClientName = "Statistics Api Client",
-                    ClientId = "statistics",
+                    ClientId = "chess-engine-statistics",
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Code,
                     RedirectUris = { "https://localhost:5002/signin-oidc" },

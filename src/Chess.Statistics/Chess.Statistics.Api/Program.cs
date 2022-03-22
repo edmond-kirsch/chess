@@ -14,11 +14,9 @@ builder.Services.AddAuthentication(options =>
        .AddOpenIdConnect("oidc", options =>
        {
            options.Authority = "https://localhost:5001";
-
-           options.ClientId = "mvc";
-           options.ClientSecret = "secret";
+           options.ClientId = "chess-engine-statistics";
+           options.ClientSecret = "511536EF-F270-4058-80CA-1C89C192F69A";
            options.ResponseType = "code";
-
            options.SaveTokens = true;
        });
 

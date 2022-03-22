@@ -11,6 +11,8 @@ using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
+using Chess.Identity.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chess.Identity
 {
@@ -25,13 +27,6 @@ namespace Chess.Identity
                          .MinimumLevel.Override("System", LogEventLevel.Warning)
                          .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
                          .Enrich.FromLogContext()
-                         // uncomment to write to Azure diagnostics stream
-                         //.WriteTo.File(
-                         //    @"D:\home\LogFiles\Application\identityserver.txt",
-                         //    fileSizeLimitBytes: 1_000_000,
-                         //    rollOnFileSizeLimit: true,
-                         //    shared: true,
-                         //    flushToDiskInterval: TimeSpan.FromSeconds(1))
                          .WriteTo.Console(
                              outputTemplate:
                              "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}",
@@ -41,7 +36,11 @@ namespace Chess.Identity
             try
             {
                 var host = CreateHostBuilder(args).Build();
-
+                
+                Log.Information("Updating database...");
+                var context = host.Services.GetService<ApplicationDbContext>();
+                context.Database.Migrate();
+                
                 Log.Information("Starting host...");
                 host.Run();
 
