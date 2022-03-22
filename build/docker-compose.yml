@@ -28,6 +28,7 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:
       - ~/.aspnet/https:/https:ro
+      - ~/.aspnet-keys:/root/.aspnet/DataProtection-Keys
     depends_on:
       - identity-db
   identity-db:
@@ -37,4 +38,4 @@ services:
       SA_PASSWORD: "1qaz@WSX"
       ACCEPT_EULA: "Y"
     ports:
-      - "1433:1433"
+      - "1450:1433"
