@@ -6,10 +6,10 @@ services:
       context: ../
       dockerfile: src/Chess.Statistics/Chess.Statistics.Api/Dockerfile
     ports:
-      - "6001:6001"
+      - "7001:7001"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:6001
+      - ASPNETCORE_URLS=https://+:7001
       - ASPNETCORE_Kestrel__Certificates__Default__Password=1qaz@WSX
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
     volumes:

@@ -41,8 +41,8 @@ namespace Chess.Identity
                     ClientId = "chess-engine-statistics",
                     ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
                     AllowedGrantTypes = GrantTypes.Code,
-                    RedirectUris = { "https://localhost:5002/signin-oidc" },
-                    PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:7001/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:7001/signout-callback-oidc" },
 
                     AllowedScopes = { IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile }
