@@ -1,5 +1,3 @@
-using Microsoft.IdentityModel.Tokens;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,9 +11,9 @@ builder.Services.AddAuthentication(options =>
        })
        .AddOpenIdConnect("oidc", options =>
        {
-           options.Authority = "https://localhost:5001";
-           options.ClientId = "chess-engine-statistics";
-           options.ClientSecret = "511536EF-F270-4058-80CA-1C89C192F69A";
+           options.Authority = builder.Configuration.GetValue<string>("Oidc:Authority");
+           options.ClientId = builder.Configuration.GetValue<string>("Oidc:ClientId");
+           options.ClientSecret = builder.Configuration.GetValue<string>("Oidc:ClientSecret");
            options.ResponseType = "code";
            options.SaveTokens = true;
        });

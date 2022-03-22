@@ -38,11 +38,12 @@ namespace Chess.Identity
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            var config = new Config(Configuration);
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()
-                    .AddInMemoryIdentityResources(Config.IdentityResources)
-                    .AddInMemoryApiScopes(Config.ApiScopes)
-                    .AddInMemoryClients(Config.Clients)
+                    .AddInMemoryIdentityResources(config.IdentityResources)
+                    .AddInMemoryApiScopes(config.ApiScopes)
+                    .AddInMemoryClients(config.Clients)
                     .AddAspNetIdentity<ApplicationUser>();
 
             services.AddAuthentication();
