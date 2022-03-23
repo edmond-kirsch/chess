@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  statistics-api:
+    container_name: "statistics-api"
+    build:
+      context: ../
+      dockerfile: src/Chess.Statistics/Chess.Statistics.Api/Dockerfile
+    ports:
+      - "7001:7001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=https://+:7001
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=1qaz@WSX
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    links:
+      - identity
+  identity:
+    container_name: "identity"
+    build:
+      context: ../
+      dockerfile: src/Chess.Identity/Chess.Identity/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+      - ASPNETCORE_URLS=http://+:5000;https://+:5001;
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=1qaz@WSX
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.aspnet-keys:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - identity-db
+  identity-db:
+    image: "mcr.microsoft.com/mssql/server"
+    container_name: "identity-db"
+    environment:
+      SA_PASSWORD: "1qaz@WSX"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1450:1433"
