@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
 using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,15 +39,14 @@ namespace Chess.Identity
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
-            var config = new Config(Configuration);
             services.AddIdentityServer()
                     .AddDeveloperSigningCredential()
-                    .AddInMemoryIdentityResources(config.IdentityResources)
-                    .AddInMemoryApiScopes(config.ApiScopes)
-                    .AddInMemoryClients(config.Clients)
+                    .AddInMemoryIdentityResources(Configuration.GetSection("IdentityServer:IdentityResources"))
+                    .AddInMemoryApiScopes(Configuration.GetSection("IdentityServer:ApiScopes"))
+                    .AddInMemoryClients(Configuration.GetSection("IdentityServer:Clients"))
                     .AddAspNetIdentity<ApplicationUser>();
 
-            services.AddAuthentication();
+            services.AddAuthentication(IdentityConstants.ApplicationScheme);
             
             services.AddDataProtection()
                     .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
@@ -64,6 +64,7 @@ namespace Chess.Identity
                 app.UseDatabaseErrorPage();
             }
             app.UseStaticFiles();
+            app.UseCookiePolicy(new CookiePolicyOptions { MinimumSameSitePolicy = SameSiteMode.Lax });
 
             app.UseRouting();
             app.UseIdentityServer();

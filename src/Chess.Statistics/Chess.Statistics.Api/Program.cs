@@ -4,11 +4,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddAuthentication(options =>
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+});
+
+builder.Services
+       .AddAuthentication(options =>
        {
            options.DefaultScheme = "Cookies";
            options.DefaultChallengeScheme = "oidc";
        })
+       .AddCookie("Cookies")
        .AddOpenIdConnect("oidc", options =>
        {
            options.Authority = builder.Configuration.GetValue<string>("Oidc:Authority");
@@ -17,10 +24,15 @@ builder.Services.AddAuthentication(options =>
            options.RequireHttpsMetadata = builder.Configuration.GetValue<bool>("Oidc:RequireHttpsMetadata");
            options.ResponseType = "code";
            options.SaveTokens = true;
-           
+
            options.Events.OnRedirectToIdentityProvider = context =>
            {
-               context.ProtocolMessage.IssuerAddress = $"{builder.Configuration.GetValue<string>("Oidc:IdentityProviderUrl")}/connect/authorize";
+               context.ProtocolMessage.IssuerAddress =
+                   $"{builder.Configuration.GetValue<string>("Oidc:IdentityProviderUrl")}/connect/authorize";
+
+               context.ProtocolMessage.RedirectUri =
+                   $"{builder.Configuration.GetValue<string>("Oidc:ChessStatisticsApi")}/signin-oidc";
+
                return Task.CompletedTask;
            };
        });
@@ -38,7 +50,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

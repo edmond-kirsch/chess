@@ -48,12 +48,6 @@ namespace Chess.Identity.Controllers
             if (message != null)
             {
                 vm.Error = message;
-
-                if (!_environment.IsDevelopment())
-                {
-                    // only show in development
-                    message.ErrorDescription = null;
-                }
             }
 
             return View("Error", vm);
